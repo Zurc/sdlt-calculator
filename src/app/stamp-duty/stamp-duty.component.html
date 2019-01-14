@@ -1,0 +1,16 @@
+<div *ngIf="results.length" class="alert alert-secondary">
+
+  <!-- outcome -->
+  <h2>Outcome</h2>
+  <p class="lead">Total Stamp Duty Land Tax to pay: <strong>{{ results[0]?.totalTaxAmount | currency: 'GBP' }}</strong></p>
+  <p>Purchase type: {{ results[0]?.purchaseType }}</p>
+  <p>House value: {{ results[0]?.houseValue | currency: 'GBP' }}</p>
+
+  <hr />
+  
+  <!-- breadkdown -->
+  <h5 class="text-muted">Breakdown</h5>
+  <p *ngFor="let result of results[0]?.breakdown" class="breakdown text-muted">
+    <span *ngIf="result.taxableAmount">{{ result.taxPercent }}% on the {{ result.taxableAmount | currency:'GBP' }} = {{ result.taxAmount | currency:'GBP' }}</span>
+  </p>
+</div>

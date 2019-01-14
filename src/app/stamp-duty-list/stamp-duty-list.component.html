@@ -1,0 +1,17 @@
+<div *ngIf="stampDutyList.length">
+
+  <div class="card">
+    <div class="card-header">History</div>
+    
+    <ul class="list-group">  
+      <li class="list-group-item" *ngFor="let stampDutyItem of stampDutyList">
+        <h4 class="card-title">{{ stampDutyItem.totalTaxAmount | currency: 'GBP' }}</h4>
+        <small class="text-muted">
+          <p class="card-text">Purchase type: {{ stampDutyItem.purchaseType }}</p>
+          <p class="card-text">House value: {{ stampDutyItem.houseValue | currency: 'GBP' }}</p>
+        </small>
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Calculate Stamp Duty Land Tax (SDLT)</h4>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f); f.reset()" novalidate>
+      <!-- purchase type   -->
+      <div class="form-group">
+        <label for="purchaseType">Purchase Type</label>
+        <select   class="form-control" id="purchaseType"
+                  [(ngModel)]="purchaseType" name="purchaseType"
+                  #pType = "ngModel"
+                  required>
+            <option [ngValue]="null" disabled>Choose purchase type</option>
+            <option *ngFor="let type of purchaseTypes" [ngValue]="type">{{type}}</option>
+        </select>
+      </div>
+      <!-- house value -->
+      <div class="form-group">
+        <label for="houseValue">House Value</label>
+        <input  type="number" class="form-control" id="houseValue" 
+                placeholder="Enter House value" min="300000"
+                [(ngModel)]="houseValue" name="houseValue"
+                #hv = "ngModel">
+        <small class="text-muted m-0">Minimum {{ '300000' | currency: 'GBP' }}</small>
+      </div>
+      <button type="submit" class="btn btn-outline-primary mr-2" [disabled]="!(f.form.valid && houseValue >= 300000)">Submit</button>
+      <button type="button" class="btn btn-default" (click)="f.reset()">Reset</button>
+    </form>
+  </div>
+</div>
